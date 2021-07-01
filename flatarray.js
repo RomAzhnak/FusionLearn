@@ -1,8 +1,9 @@
+"use strict";
 function newFlat1(numbers) {
     let arr;
     while (typeof numbers[numbers.length-1] != "number") {
         arr = numbers.pop();
-        numbers = numbers.concat(arr);
+        numbers = numbers.concat(arr);  // numbers.push(...arr);
     }
     return numbers;
 }
