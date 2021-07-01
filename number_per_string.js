@@ -1,14 +1,8 @@
 "use strict"
-let number_to_word = {
+let numberToWord = {
    '-2': 'две',
    '-1': 'одна',
-    '0': "",
-    '1': "один",
-    '2': "два",
-    '3': "три",
-    '4': "четыре",
-    '5': "пять",
-    '6': "шесть",
+    '0': '',
 	'1': 'один',
 	'2': 'два',
 	'3': 'три',
@@ -47,40 +41,46 @@ let number_to_word = {
     '900': "девятьсот"
 }
 
-function digit_to_string(digit, flag) {
+function digitToString(digit, flag) {
     let out_string = [];
     let hundreds = String(Math.floor(digit/100) * 100);
     digit = digit % 100;
-    out_string.push(String(number_to_word[hundreds]));
-    if (digit < 20) {
-        out_string.push(String(number_to_word[String(digit)]));
+    out_string.push(String(numberToWord[hundreds]));
+    if ((digit < 20) && (digit > 2)) {
+        out_string.push(String(numberToWord[String(digit)]));
     } else {
-        out_string.push(String(number_to_word[String(Math.floor(digit/10)*10)]));
+        out_string.push(String(numberToWord[String(Math.floor(digit/10)*10)]));
         if ((digit % 10 < 3) && flag) {
             digit = -(digit % 10);
-            out_string.push(String(number_to_word[String(digit)]));
+            out_string.push(String(numberToWord[String(digit)]));
             
         } else {
-            out_string.push(String(number_to_word[String(digit % 10)]));
+            out_string.push(String(numberToWord[String(digit % 10)]));
         }
     }
     if (flag) {
-        if (digit < 0) {
-            out_string.push('тысячи');
-           } else {
-               out_string.push('тысяч');
-               }
+        switch(digit) {
+            case -1: out_string.push('тысяча');
+                break;
+            case -2:
+            case 2:
+            case 3:
+            case 4: out_string.push('тысячи');
+                break;
+            default: out_string.push('тысяч');
+            
+        }
     }
     return out_string;
 }
 
-let result_number = [];
+let resultNumber = [];
 let number = +prompt("Введите число: ", 0);
 let units = number % 1000;
 let thousands = Math.floor(number/1000);
 if (thousands) {
-    result_number = digit_to_string(thousands, true);
+    resultNumber = digitToString(thousands, true);
 } 
-result_number = result_number.concat(digit_to_string(units, false));
-result_number = result_number.join(' ')
-alert(result_number);
+resultNumber = [...resultNumber, ...digitToString(units, false)];
+resultNumber = resultNumber.join(' ')
+alert(resultNumber);
