@@ -50,12 +50,13 @@ function digitToString(digit, flag) {
         out_string.push(String(numberToWord[String(digit)]));
     } else {
         out_string.push(String(numberToWord[String(Math.floor(digit/10)*10)]));
-        if ((digit % 10 < 3) && flag) {
-            digit = -(digit % 10);
+        digit = digit % 10;
+        if ((digit < 3) && flag) {
+            digit = -digit;
             out_string.push(String(numberToWord[String(digit)]));
             
         } else {
-            out_string.push(String(numberToWord[String(digit % 10)]));
+            out_string.push(String(numberToWord[String(digit)]));
         }
     }
     if (flag) {

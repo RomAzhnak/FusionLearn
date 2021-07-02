@@ -1,32 +1,29 @@
 "use strict";
 function newFlat1(numbers) {
-    let arr;
+    let tempArray;
     while (typeof numbers[numbers.length-1] != "number") {
-        arr = numbers.pop();
-        numbers = numbers.concat(arr);  // numbers.push(...arr);
+        tempArray = numbers.pop();
+        numbers = numbers.concat(tempArray);  // numbers.push(...tempArray);
     }
     return numbers;
 }
 
-let numb = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10, [11]]]]]];
-console.log(numb);
-console.log(newFlat1(numb));
-
-// второй вариант
-
-/* function newFlat(numbers) {
-    let arr = [];
-    arr = numbers.pop();
-    if (typeof arr == 'number') {
-        return numbers.concat(arr);
+function newFlatRecursion(numbers) {
+    let tempArray = [];
+    tempArray = numbers.pop();
+    if (typeof tempArray == 'number') {
+        return numbers.concat(tempArray);
     } else {
-        numbers = numbers.concat(newFlat(arr));
-        return numbers;
+        return numbers.concat(newFlatRecursion(tempArray));
     }
 }
 
-let numb = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10, 11, [2, 3, 4, [5]]]]]]];
-console.log(numb);
-console.log(numb[2]);
-let s = newFlat(numb);
-console.log(s); */
+let testArray = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10, [11]]]]]];
+console.log(testArray);
+console.log(newFlat1(testArray));
+
+// вариант с рекурсией
+
+testArray = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10, 11, [2, 3, 4, [5]]]]]]];
+console.log(testArray);
+console.log(newFlatRecursion(testArray));
