@@ -1,7 +1,7 @@
 "use strict";
 function newFlat1(numbers) {
     let tempArray;
-    while (typeof numbers[numbers.length-1] != "number") {
+    while (typeof numbers[numbers.length - 1] != "number") {
         tempArray = numbers.pop();
         numbers = numbers.concat(tempArray);  // numbers.push(...tempArray);
     }

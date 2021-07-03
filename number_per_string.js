@@ -53,11 +53,8 @@ function digitToString(digit, flag) {
         digit = digit % 10;
         if ((digit < 3) && flag) {
             digit = -digit;
-            out_string.push(String(numberToWord[String(digit)]));
-            
-        } else {
-            out_string.push(String(numberToWord[String(digit)]));
         }
+        out_string.push(String(numberToWord[String(digit)]));
     }
     if (flag) {
         switch(digit) {
@@ -76,12 +73,12 @@ function digitToString(digit, flag) {
 }
 
 let resultNumber = [];
-let number = +prompt("Введите число: ", 0);
+let number = 999999;    //ввод исходного числа
 let units = number % 1000;
 let thousands = Math.floor(number/1000);
 if (thousands) {
     resultNumber = digitToString(thousands, true);
 } 
 resultNumber = [...resultNumber, ...digitToString(units, false)];
-resultNumber = resultNumber.join(' ')
-alert(resultNumber);
+resultNumber = resultNumber.join(' ').replace(/\s+/g,' ');
+console.log(resultNumber);
