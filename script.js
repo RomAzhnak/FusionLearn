@@ -5,8 +5,6 @@ function pow(m,n) {
   }
   return m*pow(m,--n);
 }
-let a, b, power
 a = prompt("Введите число",'')
 b = prompt("Введите степень",'')
-power = pow(a,b)
 alert(`${a} в степени ${b} равно ${pow(a,b)}`);

@@ -47,10 +47,12 @@ let number_to_word = {
     '900': "девятьсот"
 }
 
-function digit_to_string(digit, flag) {
+function digitToString(digit, flag) {
+
     let out_string = [];
     let hundreds = String(Math.floor(digit/100) * 100);
     digit = digit % 100;
+    debugger;
     out_string.push(String(number_to_word[hundreds]));
     if (digit < 20) {
         out_string.push(String(number_to_word[String(digit)]));
@@ -79,8 +81,11 @@ let number = +prompt("Введите число: ", 0);
 let units = number % 1000;
 let thousands = Math.floor(number/1000);
 if (thousands) {
-    result_number = digit_to_string(thousands, true);
+    result_number = digitToString(thousands, true);
 } 
-result_number = result_number.concat(digit_to_string(units, false));
+result_number = result_number.concat(digitToString(units, false));
 result_number = result_number.join(' ')
 alert(result_number);
+
+
+//console.log(digitToString(134, false))
