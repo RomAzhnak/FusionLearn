@@ -1,5 +1,5 @@
 "use strict"
-let numberToWord = {
+const numberToWord = {
     '-2': 'две',
     '-1': 'одна',
     '0': '',
@@ -42,50 +42,47 @@ let numberToWord = {
 }
 
 function digitToString(digit, thousands) {
-    let out_string = [];
-    let hundreds = String(Math.floor(digit / 100) * 100);
+    let outString = [];
+    let hundreds = Math.floor(digit / 100) * 100;
     digit = digit % 100;
-    out_string.push(String(numberToWord[hundreds]));
+    outString.push(numberToWord[hundreds]);
     if ((digit < 20) && (digit > 2)) {
-        out_string.push(String(numberToWord[String(digit)]));
+        outString.push(numberToWord[digit]);
     } else {
-        out_string.push(String(numberToWord[String(Math.floor(digit / 10) * 10)]));
+        outString.push(numberToWord[Math.floor(digit / 10) * 10]);
         digit = digit % 10;
         if ((digit < 3) && thousands) {
             digit = -digit;
         }
-        out_string.push(String(numberToWord[String(digit)]));
+        outString.push(numberToWord[digit]);
     }
     if (thousands) {
         switch (digit) {
-            case -1: out_string.push('тысяча');
+            case -1: outString.push('тысяча');
                 break;
             case -2:
             case 2:
             case 3:
-            case 4: out_string.push('тысячи');
+            case 4: outString.push('тысячи');
                 break;
-            default: out_string.push('тысяч');
+            default: outString.push('тысяч');
 
         }
     }
-    return out_string;
+    return outString
 }
 
 function numberInWords(number) {
     if (!number) { return 0 }
-    else {
-        let resultNumber = [];
-        let units = number % 1000;  // выделяем сотни,десятки,единицы
-        let thousands = Math.floor(number / 1000);  // выделяем тысячи
-        if (thousands) {
-            resultNumber = digitToString(thousands, true);
-        }
-        resultNumber = [...resultNumber, ...digitToString(units, false)];
-        resultNumber = resultNumber.join(' ').replace(/\s+/g, ' ');
-        return resultNumber;
+    let resultNumber = [];
+    let units = number % 1000;  // выделяем сотни,десятки,единицы
+    let thousands = Math.floor(number / 1000);  // выделяем тысячи
+    if (thousands) {
+        resultNumber = digitToString(thousands, true);
     }
+    resultNumber = [...resultNumber, ...digitToString(units, false)];
+    resultNumber = resultNumber.join(' ').replace(/\s+/g, ' ');
+    return resultNumber;
 }
 
-// let number = 999999;    //ввод исходного числа
 console.log(numberInWords(555555));

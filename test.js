@@ -25,7 +25,7 @@ for (let i of ob) {
 } */
 
 //-----------------------------------
-/*let recipeMap = new Map([
+/* let recipeMap = new Map([
   ["огурец", 100],
   ["помидор", 150],
   ["лук", 50]
@@ -127,7 +127,7 @@ counter.decrease(); // уменьшить значение счётчика на
 console.log(counter()); // 10 (вместо 11) */
 
 //-------------------------------------------------
-let user = {
+/* let user = {
   name: "John",
   money: 1000,
 
@@ -140,4 +140,58 @@ let user = {
 // демонстрация результатов преобразований:
 alert(user); // hint: string -> {name: "John"}
 alert(+user); // hint: number -> 1000
-alert(user + 500); // hint: default -> 1500
+alert(user + 500); // hint: default -> 1500 */
+
+//---------------------------------------------------------
+/* let worker = {
+  slow(min, max) {
+    console.log(`Called with ${min},${max}`);
+    return min + max;
+  }
+};
+
+function cachingDecorator(func, hash) {
+  let cache = new Map();
+  return function() {
+    let key = hash(arguments); // (*)
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+
+    let result = func.call(this, ...arguments); // (**)
+
+    cache.set(key, result);
+    return result;
+  };
+}
+
+function hash(args) {
+  return args[0] + ',' + args[1];
+}
+
+worker.slow = cachingDecorator(worker.slow, hash);
+
+console.log( worker.slow(3, 5) ); // работает
+console.log( "Again " + worker.slow(3, 5) ); // аналогично (из кеша) */
+
+//----------------------------------------------------------------
+function f(x) {
+  console.log('ars', x, y);
+}
+
+function delay(f, ms) {
+  return function(...arg) {
+    setTimeout(f, ms, arg);
+  };
+}
+
+function delay1(f, ms) {
+  return function() {
+    setTimeout(() => f.apply(this, arguments), ms);
+  };
+
+}
+
+let f1000 = delay1(f, 1000);
+f1000("aaa", "qqq");
+f1000("bbb");
