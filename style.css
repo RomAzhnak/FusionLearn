@@ -1,0 +1,151 @@
+.wd {
+  /* position: absolute; */
+  /* left: 402px;
+  top: 50px; */
+  width: 96px;
+  height: 60px;
+  font-family: Revalia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 60px;
+  color: #34547A;
+  /* identical to box height */
+  /*text-align: center;*/
+}
+
+.section1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 700px;
+  background: #EEEFF1;
+}
+
+.article1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.article2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.article2__block {
+  width: 540px;
+}
+
+.article2__text {
+
+}
+
+.naw {
+  color: #34547A;
+}
+
+.article2__rectangle {
+  border: solid 1px black;;
+  width: 357px;
+  height: 233.7px;
+}
+
+.section2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 690px;
+}
+
+.article2__text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 60px;
+
+color: #727272;
+}
+
+.section__text {
+  width: 540px;
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  color: #727272;
+}
+
+.section3 {
+  background: #34547A;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 250px;
+  align-items: center;
+  justify-content: center;
+}
+
+.section3__div {
+  margin: 15px;
+  height: 50px;
+  flex: 0 141px;
+}
+
+.section4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 101px 384px;
+}
+
+.section4__div-left {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.section4__rectangle {
+  width: 445px;
+  height: 4px;
+  background: #C4C4C4;
+}
+
+.rectangle-inner {
+  width: 349.36px;
+  height: 4px;
+  background: #34547A;
+}
+
+.section5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section5__img {
+  margin-top: 57px;
+}
+
+.button {
+  background: #34547A;
+  width: 225px;
+  height: 65px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 0.1em;
+
+color: #FFFFFF;
+}
